@@ -1,0 +1,49 @@
+name: Test Python Package
+
+on:
+  pull_request:
+    branches: [ master, main ]
+  push:
+    branches: [ master, main ]
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    ###### Template for adding private repository dependencies ########
+    ## Add secrets here to access private repositories.
+    ## For each secret key, the corresponding public key
+    ## must be added as a "Deployment Key" to the 
+    ## repository of the dependency.
+
+    ## The name after 'secrets.' must match the name of the
+    ## private key secret added to the Github repo for this
+    ## project under: 
+    ##  'Settings' -> 'Secrets' -> 'New repository secret'
+
+    # - name: Setup SSH Access
+    #   uses: webfactory/ssh-agent@v0.9.0
+    #   with:
+    #     ssh-private-key: |
+    #       ${{ secrets.PRIVATE_REPO_KEY_NAME_1 }}
+    #       ${{ secrets.PRIVATE_REPO_KEY_NAME_2 }}
+
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        # Set the python version to use in testing:
+        python-version: "3.10.13"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pipx
+        pipx install poetry==1.8.3
+        poetry install --with dev
+
+    - name: Run tests
+      run: |
+        poetry run pytest
