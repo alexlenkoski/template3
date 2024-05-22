@@ -1,0 +1,4 @@
+from . import utils
+
+def my_function():
+    return utils_global_data_dir()

@@ -9,16 +9,16 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 # Information about the project and authors should be filled in the fields below.
 # If some of the fields are not relevant to your project, they can be removed.
-name = "package_name"            # The name of your package
+name = "template3"            # The name of your package
 version = "0.1.0"                # The version of your package
 description = ""                 # A short description of your package
-authors = ["NR Person"]          # A list of authors in the format Name <email> (The email is optional).
+authors = ["Alex"]          # A list of authors in the format Name <email> (The email is optional).
 license = "Proprietary."         # The license of your package.
 readme = "README.md"             # Path to your README file (likely this can be kept as is)
 # Below, we specify to poetry which package should be included. As it is now, we are telling poetry to include the package called "package_name".
 # This should be changed to the name of your package. The name of the package should be the same as the name of the folder "/src/<package_name>".
 packages = [
-    { include = "package_name", from = "src" }
+    { include = "template3", from = "src" }
 ]
 
 [tool.poetry.dependencies]

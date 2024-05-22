@@ -1,0 +1,2 @@
+def global_data_dir():
+    dir = "~/NR/Wheelhouse/"
